@@ -1,5 +1,5 @@
 
-/* ———————————————————— Copyright (c) 2021 toastythetoaster ————————————————————
+/* ————————————————— Copyright (c) 2021-2022 toastythetoaster ——————————————————
  *
  * DiscordExperiments Plugin
  *
