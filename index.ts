@@ -1,9 +1,9 @@
 
-/* ————————————————— Copyright (c) 2021-2022 toastythetoaster ——————————————————
+/* ——————— Copyright (c) 2021-2022 toastythetoaster. All rights reserved. ———————
  *
  * DiscordExperiments Plugin
  *
- * ————————————————————————————————————————————————————————————————————————————— */
+ * —————————————————————————————————————————————————————————————————————————————— */
 
 import { UPlugin } from '@classes';
 import { getByProps } from '@webpack';

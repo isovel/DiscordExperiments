@@ -5,5 +5,13 @@
     "author": {
         "name": "Toasty",
         "id": "255515821541949440"
-    }
+    },
+    "id": "DiscordExperiments",
+    "support": "NDzjMB2WhR",
+    "donations": [
+      {
+        "name": "Ko-fi",
+        "link": "https://ko-fi.com/slice"
+      }
+    ]
 }
