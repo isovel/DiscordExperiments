@@ -6,14 +6,16 @@
  * —————————————————————————————————————————————————————————————————————————————— */
 
 import { UPlugin } from '@classes';
-import { getByProps, APIModule } from '@webpack';
-import { instead, patches, unpatchAll } from '@patcher';
+import { UserStore, getByProps, APIModule, getByDisplayName, getModule } from '@webpack';
+import { instead, after, patches, unpatchAll } from '@patcher';
 
 const strings = {
   success: 'Patched successfully! Enjoy!',
   error: 'This plugin requires the Discord Experiments Patcher theme to work! Install the theme, enable it, and reload Discord.',
   prefix: '[DiscordExperiments]',
 }
+
+const currentUserId = UserStore.getCurrentUser().id;
 
 class DiscordExperiments extends UPlugin {
   constructor() {
@@ -47,6 +49,15 @@ class DiscordExperiments extends UPlugin {
         });
       }
       return original(args[0]);
+    });
+    getModule(m => m?.default?.displayName === 'UserProfileBadgeList', {ret: 'exports', all: true}).forEach(m => {
+      after('DiscordExperiments', m, 'default', (_, args, ret) => {
+        const { user } = args.find(a => a?.user);
+        if (user.id === currentUserId) {
+          const staffBadgePos = ret.props.children.findIndex(c => c?.key === '0');
+          if (staffBadgePos !== -1) ret.props.children.splice(staffBadgePos, 1);
+        }
+      })
     });
   }
 }
